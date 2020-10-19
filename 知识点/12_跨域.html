@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    什么是跨域：（）同源策略
+      当前发起请求的域与该请求指向的资源所在的域不一致
+      （域就是协议，域名和端口号的集合）
+    解决方案：
+      JSONP：
+        通常为了减轻web服务器的负载，我们把js、css，img等静态资源分离到另一台独立域名的服务器上
+        ，在html页面中再通过相应的标签从不同域名下加载静态资源，而被浏览器允许，
+        基于此原理，我们可以通过动态创建script，再请求一个带参网址实现跨域通信。
+        jsonp正是利用这个特性来实现的。
+        （基本原理：主要就是利用 script 标签的src属性没有跨域的限制，
+        通过指向一个需要访问的地址，由服务端返回一个预先定义好的 Javascript 函数的调用，
+        并且将服务器数据以该函数参数的形式传递过来，此方法需要前后端配合完成。）
+
+        优点：
+          JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
+          只能实现get一种请求、不安全 容易遭到xss攻击
+      CORS：
+        CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）
+        它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+        
+        优点：
+          目前，所有浏览器都支持该功能(IE8+：IE8/9需要使用XDomainRequest对象来支持CORS）)，CORS也已经成为主流的跨域解决方案。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。CORS与JSONP的使用目的相同，但是比JSONP更强大。JSONP只支持GET请求，CORS支持所有类型的HTTP请求。JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。
+
+      document.domain + iframe跨域：
+        两个页面都通过js强制设置
+      代理跨域：
+        起一个代理服务器，实现数据的转发
+
+   -->
+  </body>
+</html>

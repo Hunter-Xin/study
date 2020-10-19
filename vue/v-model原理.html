@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input v-model="sth" />
+    //  等同于
+    <input :value="sth" @input="sth = $event.target.value" />
+    <!-- 
+
+        Vue中Vue-model原理是什么？
+        v-model是Vue用于表单元素上创建双向数据绑定，它本质是一个语法糖，
+        在单向数据绑定的基础上，
+        增加了监听用户输入事件并更新数据的功能。
+
+        data和view之间的自动化处理
+
+        $event 指代当前触发的事件对象。
+
+        $event.target 指代当前触发的事件对象的dom
+
+        $event.target.value 就是当前dom的value值
+
+        在@input方法中，
+
+        value => sth
+
+        在:value中：
+
+        sth => value
+
+        如此，形成了一个闭环，也就是所说的数据的双向绑定。
+
+     -->
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 500%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        节流：
+            一个函数执行一次后，只有大于设定的执行周期后，才会执行第二次
+        作用：
+            性能优化
+            比如有一个要频繁触发的函数，出于性能优化的角度，在规定时间内，只让函数触发的第一次生效，后面不生效
+        常用的函数节流应用：
+            oninput,onkeypress,onscroll,onresize等触发频率搞的事件
+
+     -->
+</body>
+<script>
+    function throttle(fn,delay){
+        var lastTime = 0;//函数上一次被执行的时间
+        //闭包
+        return function() {
+            var nowTime = Date.now();
+            //如果时间大于时间限制，那么就让回调函数执行
+            if(nowTime-lastTime>delay){
+                fn();
+                //更新lastTime
+                lastTime = nowTime;
+            }
+        }
+        
+    }
+    document.onscroll = throttle(function(){
+        console.log('滑动了：' + Date.now())
+    },1500)
+       
+    
+    
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es6 flat()
+        var arr = [1, [2, 32, 3],
+            [44, 2, [33, 34]]
+        ]
+        let arr1 = arr.flat(Infinity)
+        console.log(arr1);
+
+        // 递归
+        // function dg(dd) {
+        //     let list = []
+        //     for (let i = 0; i < dd.length; i++) {
+        //         dd[i] instanceof Array ? list = list.concat(dg(dd[i])) : list.push(dd[i])
+        //     }
+        //     return list
+        // }
+        function dg(dd) {
+            let list = []
+            for (let i = 0; i < dd.length; i++) {
+                dd[i] instanceof Array ? list = list.concat(dg(dd[i])) : list.push(dd[i])
+            }
+            let list1 = [...new Set(list)]
+            list1.sort((a,b) => {
+                return a-b
+            })
+            return list1
+        }
+        let bb = dg(arr)
+        console.log(bb);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 500%;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  function throttle(fn,delay) {
+    var lastTime = 0;
+    return function() {
+      var nowTime = Date.now();
+    if(nowTime-lastTime>delay){
+      fn();
+      lastTime=nowTime;
+    }
+  }
+}
+  document.onscroll = throttle(function() {
+    console.log('滑动了' + Date.now())
+  },1500)
+</script>
+</html>

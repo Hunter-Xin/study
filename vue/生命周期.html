@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        Vue 实例有一个完整的生命周期，
+        也就是从开始创建、初始化数据、编译模版、挂载 Dom -> 
+        渲染、更新 -> 
+        渲染、卸载等一系列过程，我们称这是 Vue 的生命周期
+        
+        生命周期：
+        
+            beforeCreate 创建之前 data el都没有
+            created 创建完成 属性绑定，但DOM还未生成，$el属性还未生成
+            beforeMount 编译前
+            mounted 编译后
+            beforeUpdate 更新前
+            updated 更新后
+            beforeDestory 销毁前
+            destoryed 销毁后
+
+        在哪个生命周期内调用异步请求？
+            可以在钩子函数created，beforeMount，mountd中进行调用，因为在这三个钩子函数中
+            data已经创建，可以将服务器返回的数据进行赋值，但是推荐在created中调用异步请求
+
+            因为：
+                1.能够快速获取到服务器端的数据，减少页面loading的时间
+                2.ssr不支持beforeMount，mounted钩子函数，所以放在created中有助于一致性
+     -->
+</body>
+</html>

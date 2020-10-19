@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        什么是闭包：
+            函数嵌套函数
+            内部函数可以引用外部函数的变量或参数
+        闭包的优点：
+            希望一个变量长期驻扎再内存中
+            避免全局变量的污染（代码模块化）
+            私有成员的存在
+        缺点：
+            引发内存泄漏
+     -->
+</body>
+<script>
+    var f = (
+        function() {
+            var a = 20;
+            return function() {
+                a++;
+                console.log(a)
+            }
+        }
+    )();
+
+    f();
+    f();
+    f();
+
+    function add() {
+        let num = 0
+        return function() {
+            num++
+            console.log(num);
+        }
+    }
+
+    let sum = add()
+    sum()
+    sum()
+    sum()
+</script>
+</html>

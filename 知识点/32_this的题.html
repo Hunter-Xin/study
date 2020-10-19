@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // this 谁调用就指向谁
+        // fn1() 普通函数 无调用者 默认就是window
+        var length = 100
+        function f1() {
+            console.log(this.length);
+        }
+        var obj = {
+            length: 10,
+            f2: function(f1) {
+                f1() // 100
+                arguments[0]() //2  相当于数组调用 数组的长度 实参传了2个this.length就为2
+            }
+        }
+        obj.f2(f1,1)
+
+        //text 2
+        // 首先会预解析 var a;
+        // a = 100
+        var a = 10
+        function text() {
+            a = 100
+            console.log(a);
+            console.log(this.a);
+            var a;
+            console.log(a);
+        }
+        text() // 100 10 100
+
+
+        // 全局变量和局部变量同名的坑！！！ 同名的话 全局变量对局部不起作用
+
+        var a = 10
+        function text2() {
+            console.log(a);
+            a = 100
+            console.log(this.a);
+            var a;
+            console.log(a);
+        }
+        text2() // undefind 10 100
+
+
+        function aa(o) {
+            o.a = 'baidu.com'
+            o = new Object()
+            o.a = 'guge.com'
+        }
+        let web = new Object()
+        aa(web)
+        console.log(web.a);
+    </script>
+</body>
+</html>

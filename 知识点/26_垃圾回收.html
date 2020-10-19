@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    js的解释器可以检测到何时程序不再使用一个对象了，
+    当他确定了一个对象是无用的时候，他就知道不再需要这个对象了，
+    可以把它所占用的内存释放掉
+   -->
+   
+</body>
+<script>
+  var a = "hello world"
+  var b = "world"
+  var a = b
+
+  // 会释放掉hello world
+</script>
+</html>

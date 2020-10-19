@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.事件：
+            点击事件 鼠标移动事件等
+        2.DOM事件流：
+            冒泡事件流，捕获事件流
+        3.DOM事件模型：
+            捕获，目标，冒泡
+
+        什么是事件委托：
+            一件事本来是要绑定到某个元素上，然而却绑定到了该元素的父元素上（或者祖先元素）
+            利用事件冒泡原理，触发执行效果
+        优点：
+            提高网页性能
+            通过事件委托添加的事件，对后期生成的元素依然有效
+        例子：
+            举个例子：现在页面上有个 ul，ul 里有三个 li，通过循环给每个 li 添加点击事件，
+            发现三个 li 到可以正常触发点击事件了，然后通过 js 代码在 ul 里插入（append）两个 li，
+            再试着点击所有 li，发现前面三个 li 正常触发点击事件，后面新添加的两个 li 无法正常触发点击事件。
+     -->
+     <ul id="ul1">
+         <li>1111</li>
+         <li>222</li>
+         <li>333</li>
+     </ul>
+     <button id="btn">点击</button>
+</body>
+<script>
+    var oUl = document.getElementById('ul1')
+    var aLi = document.getElementsByTagName('li')
+    var oBtn = document.getElementById('btn')
+
+    oBtn.onclick = function() {
+        var oLi = document.createElement('li')
+        oLi.innerHTML = Math.random()
+        oUl.appendChild(oLi)
+    }
+    oUl.onclick = function(e) {
+        if(e.target.tagName == 'LI') {
+            console.log(e.target.innerHTML)
+        }
+    }
+</script>
+</html>

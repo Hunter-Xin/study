@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 变更函数调用者实例
+        function myCall() {
+            console.log(this.name)
+        }
+        // 测试
+        const obj = {
+            name : '蔚来' 
+        }
+
+        obj.myCall = myCall //变更myCall的调用者
+        obj.myCall() // 蔚来
+    </script>
+</body>
+</html>

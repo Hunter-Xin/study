@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    function bubble(ary) {
+      for (let i = 0; i < ary.length - 1; i++) {
+        for (let j = 0; j < ary.length - 1 - i; j++) {
+          if (ary[j] > ary[j + 1]) {
+            let temp = null;
+            temp = ary[j];
+            ary[j] = ary[j + 1];
+            ary[j + 1] = temp;
+          }
+        }
+      }
+      return ary;
+    }
+    let aaa = [45, 84, 1, 23, 69, 89, 25];
+    bbb = bubble(aaa);
+    console.log(bbb);
+  </script>
+</html>

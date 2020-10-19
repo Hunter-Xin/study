@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        vuex:
+            是实现组件全局状态（数据）管理的一种机制
+            可以方便的实现组件之间数据的共享    
+        好处：1.能够在vuex中集中管理数据，抑郁开发和后期维护
+              2.能够高效的实现组件之间的数据共享，提高开发效率
+              3.存储在vuex中的数据都是响应式的，能够实时保持数据与页面的同步
+        state:
+            state提供唯一的公共数据源，所有共享的数据统一放在store的state中存储
+            mutation用于变更store中的数据{
+                1.只能通过mutation变更store数据，
+                不可以直接操作store中的数据
+                2.虽然繁琐，但是能监控所有数据变化
+                3.commit就是调用某个mutation函数
+                4.不能写异步代码
+            action：
+                用于处理异步处理
+                通过触发mutation的方式间接变更数据
+                dispatch触发action函数
+            }
+     -->
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    宏任务：
+      分类：setTimeout setInterval requrestAniimationFrame
+      1.宏任务所处的队列就是宏任务队列
+      2.第一个宏任务队列中只有一个任务： 执行主线程js代码
+      3.宏任务队列可以有多个
+      4.当宏任务队列中的任务全部执行完后会查看是否有微任务，如果有就先执行微任务中的所有任务
+      没有的话就查询是否有宏任务
+
+    微任务：
+      分类： new Promise().then(回调) process.nextTick
+      1.微任务所处的队列就是微任务队列
+      2.只有一个微任务队列
+      3.在上一个宏任务队列执行完毕后，如果有微任务队列就会执行微任务队列中的任务
+
+   -->
+  </body>
+  <script>
+    console.log("start");
+
+    setTimeout(() => {
+      console.log(11);
+    }, 0);
+
+    new Promise((resolve, reject) => {
+      for (let i = 0; i < 5; i++) {
+        console.log(i);
+      }
+      resolve();
+    }).then(() => {
+      console.log("被回调");
+    });
+
+    console.log("end");
+  </script>
+</html>

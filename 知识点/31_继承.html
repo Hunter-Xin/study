@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //原型链继承：直接让子类的原型对象指向父类的实例，当子类找不到对应的属性和方法时就会向父类上去找
+
+        // 父类
+        function Parent() {
+            this.name = '大哥！'
+        }
+
+        // 父类的原型方法
+        Parent.prototype.getName = function() {
+            return this.name
+        }
+
+        // 子类
+        function Child() {}
+        // 让子类的原型对象指向父类的实例，这样子类找不到就会去父级找
+        Child.prototype = new Parent()
+        // Child的实例就能访问到父级以及原型链的熟属性
+        let child = new Child()
+
+        console.log(child.name);
+        console.log(child.getName());
+
+        // 构造函数的继承
+
+        function Par() {
+            this.name = '大哥'
+        }
+
+        function Chi() {
+            Par.call(this)
+        }
+
+        let aa = new Chi()
+        console.log(aa.name);
+    </script>
+</body>
+</html>

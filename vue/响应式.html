@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        vue响应式原理
+            依赖于object.defineProperty,通过设定对象属性的setter和getter方法监听数据的变化
+           
+            Object.defineProperty(obj, prop, descriptor)
+
+            obj：要在其上定义属性的对象
+            prop：要定义和修改的属性名称
+            descriptor：被定义或修改的属性修饰符
+     -->
+
+     <!-- 
+         常用指令：
+            v-for 循环数组
+            v-text
+            v-on @
+            v-model
+            v-bind : 属性绑定
+            v-if v-show
+
+        生命周期：
+            beforeCreate 创建之前 data el都没有
+            created 创建完成 属性绑定，但DOM还未生成，$el属性还未生成
+            beforeMount 编译前
+            mounted 编译后
+            beforeUpdate 更新前
+            updated 更新后
+      -->
+</body>
+</html>

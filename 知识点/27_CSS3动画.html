@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    #content{
+      width: 100vh;
+      height: 100vh;
+      background: #cccccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #center{
+      width: 200px;
+      height: 200px;
+      background: red;
+      transform: rotate(45deg) scale(0.5);
+      animation-name: hd;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes hd {
+      25%{
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+      }50%{
+        transform: rotate(45deg) scale(0.5);
+        opacity: 0.5;
+      }
+      75%{
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+      }
+      85%{
+        transform: rotate(45deg) scale(0.5);
+        opacity: 0.5;
+      }
+    }
+    #center::before{
+      content: '';
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      position: absolute;
+      background: red;
+      transform: translateX(-100px);
+    }
+    #center::after{
+      content: '';
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      border-radius: 50%;
+      background: red;
+      transform: translateY(-100px);
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div id="center"></div>
+  </div>
+</body>
+</html>
