@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./创建二叉树.js"></script>
+    <script>
+      // 根节点开始，前序遍历
+      function Q(root) {
+        // 递归边界，toot为空
+        if (!root) {
+          return;
+        }
+
+        console.log("当前遍历的节点是：", root.val);
+
+        Q(root.left);
+        Q(root.right);
+      }
+      // 中序遍历
+      function Z() {
+        if (!root) {
+          return;
+        }
+        Z(root.left);
+        console.log("当前遍历的节点是：", root.val);
+        Z(root.right);
+      }
+      // 后序遍历
+      function H() {
+        if (!root) {
+          return;
+        }
+        H(root.left);
+        H(root.right);
+        console.log("当前遍历的节点是：", root.val);
+      }
+      let a = createTree([1, 2, 3, 4, 5, 6, null, 4, null]);
+      let b = Q(a);
+      console.log(a);
+    </script>
+  </body>
+</html>
