@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
-<script>
-    function quick (ary) {
-        // 结束递归(当ary小于等于一项)
-        if(ary.length<=1){
-            return ary;
-        }
-        //找到数组的中间项，在原有的数组中把它移除
-        let middleIndex=Math.floor(ary.length/2);
-        let middleValue=ary.splice(middleIndex,1)[0];
+  </head>
+  <body></body>
+  <script>
+    // function quick (ary) {
+    //     // 结束递归(当ary小于等于一项)
+    //     if(ary.length<=1){
+    //         return ary;
+    //     }
+    //     //找到数组的中间项，在原有的数组中把它移除
+    //     let middleIndex=Math.floor(ary.length/2);
+    //     let middleValue=ary.splice(middleIndex,1)[0];
 
-        // 准备左右两个数组，循环剩下数组中的每一项，比较小的放在左面
-        // 反之右面
+    //     // 准备左右两个数组，循环剩下数组中的每一项，比较小的放在左面
+    //     // 反之右面
 
-        let aryLeft=[],
-            aryRight=[];
-        for(let i=0;i<ary.length;i++){
-            let item = ary[i];
-            item<middleValue?aryLeft.push(item):aryRight.push(item);
-        }
-        // 递归方式让两边的数组持续这样处理，都排好序为止，最后左加中间加右
+    //     let aryLeft=[],
+    //         aryRight=[];
+    //     for(let i=0;i<ary.length;i++){
+    //         let item = ary[i];
+    //         item<middleValue?aryLeft.push(item):aryRight.push(item);
+    //     }
+    //     // 递归方式让两边的数组持续这样处理，都排好序为止，最后左加中间加右
 
-        return quick(aryLeft).concat(middleValue,quick(aryRight));
+    //     return quick(aryLeft).concat(middleValue,quick(aryRight));
+    // }
+    // function quick(arr) {
+    //   if (arr.length <= 1) {
+    //     return arr;
+    //   }
+    //   let middleIndex = Math.floor(arr.length / 2);
+    //   let middleValue = arr.splice(middleIndex, 1)[0];
+
+    //   let left = [];
+    //   let right = [];
+
+    //   for (let i = 0; i < arr.length; i++) {
+    //     let item = arr[i];
+    //     item < middleValue ? left.push(item) : right.push(item);
+    //   }
+    //   return quick(left).concat(middleValue, quick(right));
+    // }
+    function quick(arr) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+      let middleIndex = Math.floor(arr.length / 2);
+      let middleValue = arr.splice(middleIndex, 1)[0];
+
+      let left = [];
+      let right = [];
+
+      arr.forEach((item) => {
+        item < middleValue ? left.push(item) : right.push(item);
+      });
+
+      return quick(left).concat(middleValue, quick(right));
     }
-    let ary1 = [12,58,14,5,69,78];
+    let ary1 = [12, 58, 14, 5, 69, 78];
     ary2 = quick(ary1);
     console.log(ary2);
-</script>
+  </script>
 </html>
