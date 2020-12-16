@@ -1,18 +1,42 @@
-Function.prototype.call = function (context) {
-  console.log(1);
-  //重定义this
-  const DoLi = context || window;
-  //模拟档期那的对象的this指向
-  DoLi.func = this;
-  //获取参数
-  const args = Array.from(arguments).slice(1);
-  //绑定参数
-  const res = arguments.length > 1 ? DoLi.func(...args) : DoLi.func();
-  //清除定义的this
-  delete DoLi.func;
-  //返回结果
-  return res;
+Function.prototype.call = function (context, ...args) {
+  context = context || window; // 判断上下文是否传入，默认window
+  const fn = this; // 保存this
+
+  context.fn = fn; // 最重要的一步：改变this指向，通过挂载到context上，实现this的转移
+  const res = context.fn(...args); // 立即执行
+
+  delete context.fn;
+
+  return res; // 返回结果
 };
+
+Function.prototype.apply = function (context, ...args) {
+  context = context || window; // 判断上下文是否传入，默认window
+  const fn = this; // 保存this
+
+  context.fn = fn; // 最重要的一步：改变this指向，通过挂载到context上，实现this的转移
+  const res = context.fn(...args[0]); // 立即执行
+
+  delete context.fn;
+
+  return res; // 返回结果
+};
+Function.prototype.bind = function (context, ...args) {
+  context = context || window; // 判断上下文是否传入，默认window
+  const fn = this; // 保存this
+
+  context.fn = fn; // 最重要的一步：改变this指向，通过挂载到context上，实现this的转移
+
+  // 返回闭包
+  return function () {
+    const res = context.fn(...args); // 立即执行
+
+    delete context.fn;
+
+    return res; // 返回结果
+  };
+};
+
 let a = {
   name: "I am a",
   sayName: function (...out) {

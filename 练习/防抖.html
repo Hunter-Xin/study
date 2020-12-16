@@ -25,7 +25,7 @@
           clearTimeout(timer);
         }
         timer = setTimeout(() => {
-          fn.apply(this.arguments);
+          fn.apply(this, arguments);
         }, delay);
       };
     }
